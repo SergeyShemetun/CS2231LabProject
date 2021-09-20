@@ -7,7 +7,10 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello "+ "user.name");
         System.out.println("Welcome to the game");
-        String [] Commands ={"go forward", "go back", "go left", "go right","end" };
+       
+        Help Commands = new Help();
+        Commands.printCommands();
+        
         System.out.println("Please tell me what to do");
         Scanner input= new Scanner(System.in);
 
