@@ -24,17 +24,13 @@ public class Location {
     public void move(String direction) {
         System.out.println("You're moving from the [" + currentLocation + "] in the following direction: [" + direction + "]");
 
-        if(currentLocation.equals("Foyer"))
-            handleFoyerMove(direction);
+        switch (currentLocation) {
+            case "Foyer" -> handleFoyerMove(direction);
+            case "Kitchen" -> handleKitchenMove(direction);
+            case "Attic" -> handleAtticMove(direction);
+            case "Basement" -> handleBasementMove(direction);
+        }
 
-        else if (currentLocation.equals("Kitchen"))
-            handleKitchenMove(direction);
-        else if (currentLocation.equals("Attic"))
-            handleAtticMove(direction);
-        else if (currentLocation.equals("Basement"))
-            handleBasementMove(direction);
-
-        System.out.println("Your new location is "+ currentLocation);
     }
 
 
@@ -54,15 +50,12 @@ public class Location {
 
     public void handleKitchenMove(String direction) {
 
-        if(direction.equals(SOUTH))
-            currentLocation = "Basement";
-
-        else if (direction.equals(WEST))
-            currentLocation="Foyer";
-        else if (direction.equals(NORTH))
-            currentLocation="Attic";
-        else
-            System.out.println("Cant get there from here");
+        switch (direction) {
+            case SOUTH -> currentLocation = "Basement";
+            case WEST -> currentLocation = "Foyer";
+            case NORTH -> currentLocation = "Attic";
+            default -> System.out.println("Cant get there from here");
+        }
 
 
     }
