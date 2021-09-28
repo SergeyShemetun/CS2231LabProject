@@ -5,8 +5,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        // Setting up user shit
+        User user1 = new User();
+        user1.setName("User 1");
+
         String direction;
-        System.out.println("Hello " + "user.name");
+        System.out.println("Hello " + user1.getName());
         System.out.println("Welcome to the game");
 
         Help Commands = new Help();
@@ -15,11 +19,7 @@ public class Main {
         System.out.println("Please tell me what to do");
         Scanner input = new Scanner(System.in);
 
-        // Setting up user shit
-        User user1 = new User();
-        user1.setName("User 1");
-        Location Location=new Location();
-        Location.setCurrentLocation("Foyer");
+
 
         // Figuring out wtf is  going on
         Commands.printCommands();
@@ -29,9 +29,8 @@ public class Main {
             //supposed to start interacting here
             System.out.println("Which way do you want to go?");
             direction=input.nextLine();
-            Location.move(direction);
-
-
+            user1.move(direction);
+            System.out.println("You are now in "+user1.whereAmI());
 
 
 
