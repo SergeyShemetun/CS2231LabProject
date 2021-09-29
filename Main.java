@@ -6,14 +6,15 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        
+        String direction;
+        String user1_name;
+
         // Setting up user info
         User user1 = new User();
         System.out.println("Set your user name: ");
         user1_name = input.nextLine();
-        user1.setName(input_username);
+        user1.setName(user1_name);
 
-        String direction;
         System.out.println("Hello " + user1.getName());
         System.out.println("Welcome to the game");
 
@@ -25,7 +26,8 @@ public class Main {
             //supposed to start interacting here
             System.out.println("Which way do you want to go?");
             direction=input.nextLine();
-            if (directtion = "End"){
+            if (direction.equals("End")){
+                System.out.println("Good bye!");
                 break;
             }
             else{
