@@ -1,10 +1,10 @@
-package com.cs2231L.Milestone1;
+package com.LabProject;
 
 public class Help {
     private final String[] Commands;
 
     Help(){
-        this.Commands = new String[]{"go forward", "go back", "go left", "go right","end"};
+        this.Commands = new String[]{"East", "West", "South", "North","End"};
     }
 
     public void printCommands(){
