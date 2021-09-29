@@ -2,13 +2,10 @@ package com.LabProject;
 
 public class Location {
     public final String EAST = "East";
-
     public final String WEST = "West";
     public final String SOUTH = "South";
     public final String NORTH = "North";
     private String currentLocation = "Foyer";
-
-
 
 
     public String getCurrentLocation() {
@@ -43,9 +40,6 @@ public class Location {
         else
             System.out.println(" cant get there from here...  ");
 
-
-
-
     }
 
     public void handleKitchenMove(String direction) {
@@ -56,8 +50,6 @@ public class Location {
             case NORTH -> currentLocation = "Attic";
             default -> System.out.println("Cant get there from here");
         }
-
-
     }
 
 
@@ -74,6 +66,5 @@ public class Location {
         else
             System.out.println("Cant get there from here");
     }
-
 }
 
