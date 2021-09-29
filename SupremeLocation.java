@@ -32,7 +32,7 @@ package com.cs2231L.Milestone1;
     			handleAtticMove(direction);
     		if(currentLocation.equals("Basement"))
     			handleBasementMove(direction);
-    		System.out.println(" You're updated location is " + currentlocation)
+    		System.out.println(" You're updated location is " + currentLocation);
     
     	}
     
