@@ -1,4 +1,4 @@
-package com.LabProject;
+package com.cs2231L.Milestone1;
 
 public class Help {
     private final String[] Commands;
