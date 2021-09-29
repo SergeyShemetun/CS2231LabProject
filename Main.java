@@ -22,8 +22,6 @@ public class Main {
 
 
         // Figuring out wtf is  going on
-        Commands.printCommands();
-
         for(int i=0;i<5;i++) {
 
             //supposed to start interacting here
