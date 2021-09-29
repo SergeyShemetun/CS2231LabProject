@@ -1,9 +1,9 @@
-package com.LabProject;
+package com.cs2231L.Milestone1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String direction;
@@ -15,24 +15,31 @@ public class Main {
         user1_name = input.nextLine();
         user1.setName(user1_name);
 
+        System.out.println();
         System.out.println("Hello " + user1.getName());
-        System.out.println("Welcome to the game");
+        System.out.println("Welcome to the game!");
 
+        // print list of commands
+        System.out.println();
         Help Commands = new Help();
         Commands.printCommands();
 
-        // Figuring out wtf is  going on
         while (true) {
-            //supposed to start interacting here
+            System.out.println();
             System.out.println("Which way do you want to go?");
             direction=input.nextLine();
-            if (direction.equals("End")){
-                System.out.println("Good bye!");
-                break;
+            if (Arrays.asList(Commands).contains(direction)){
+                if (direction.equals("End")){
+                    System.out.println("Good bye!");
+                    break;
+                }
+                else{
+                    user1.move(direction);
+                    System.out.println("You are now in "+user1.whereAmI());
+                }
             }
             else{
-                user1.move(direction);
-                System.out.println("You are now in "+user1.whereAmI());
+                System.out.println("Invalid Command. Please try again!");
             }
         }
     }
