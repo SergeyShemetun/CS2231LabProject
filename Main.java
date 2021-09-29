@@ -5,9 +5,13 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // Setting up user shit
+        Scanner input = new Scanner(System.in);
+        
+        // Setting up user info
         User user1 = new User();
-        user1.setName("User 1");
+        System.out.println("Set your user name: ");
+        user1_name = input.nextLine();
+        user1.setName(input_username);
 
         String direction;
         System.out.println("Hello " + user1.getName());
@@ -16,22 +20,18 @@ public class Main {
         Help Commands = new Help();
         Commands.printCommands();
 
-        System.out.println("Please tell me what to do");
-        Scanner input = new Scanner(System.in);
-
-
-
         // Figuring out wtf is  going on
-        for(int i=0;i<5;i++) {
-
+        while (true) {
             //supposed to start interacting here
             System.out.println("Which way do you want to go?");
             direction=input.nextLine();
-            user1.move(direction);
-            System.out.println("You are now in "+user1.whereAmI());
-
-
-
+            if (directtion = "End"){
+                break;
+            }
+            else{
+                user1.move(direction);
+                System.out.println("You are now in "+user1.whereAmI());
+            }
         }
     }
 }
