@@ -30,8 +30,7 @@ public class Main {
             System.out.println();
             System.out.println("Which way do you want to go?");
             direction=input.nextLine();
-            List<String> directionList = new ArrayList<>(Arrays.asList(Commands.Commands));
-            if (directionList.contains(direction)){
+            if (Commands.checkCommands(direction)){
                 if (direction.equals("End")){
                     System.out.println("Good bye!");
                     break;
