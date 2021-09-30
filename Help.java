@@ -1,7 +1,7 @@
 package com.cs2231L.Milestone1;
 
 public class Help {
-    private final String[] Commands;
+     final String[] Commands;
 
     Help(){
         this.Commands = new String[]{"East", "West", "South", "North","End"};
