@@ -1,6 +1,8 @@
 package com.cs2231L.Milestone1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -24,11 +26,12 @@ public class Main {
         Help Commands = new Help();
         Commands.printCommands();
 
-        while (true) {
+        while (true){
             System.out.println();
             System.out.println("Which way do you want to go?");
             direction=input.nextLine();
-            if (Arrays.asList(Commands).contains(direction)){
+            List<String> directionList = new ArrayList<>(Arrays.asList(Commands.Commands));
+            if (directionList.contains(direction)){
                 if (direction.equals("End")){
                     System.out.println("Good bye!");
                     break;
