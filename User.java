@@ -2,7 +2,6 @@ package com.cs2231L.Milestone1;
 
 public class User {
     private String name;
-
     Location location = new Location();
 
     public String getName() {
