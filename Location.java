@@ -1,109 +1,64 @@
-package com.LabProject;
-
-import java.util.Scanner;
+package com.ff;
 
 public class Location {
+    public final String EAST = "East";
+    public final String NORTH = "North";
+    public final String SOUTH = "South";
+    public final String WEST = "West";
+    private String currentLocation = "Foyer";
 
-    private String currentPosition;
-    private String userLocation;
-    private String optionNorth;
-    private String optionEast;
-    private String optionSouth;
-    private String optionWest;
-
-    public Location(String location) {
-        this.currentPosition = location;
-        userLocation = "Center";
-        optionNorth = "north";
-        optionSouth = "south";
-        optionEast = "east";
-        optionWest = "west";
+    public String getCurrentLocation() {
+        return currentLocation;
     }
 
-    public void move(){
-        System.out.println("What direction would you like to go?");
-        Scanner input = new Scanner(System.in);
-        String userInput = input.nextLine();
+    public void setCurrentLocation(String currentLocation) {
+        this.currentLocation = currentLocation;
     }
-
-
-
-
 
     public void move(String direction) {
-        System.out.println("You are moving " + direction + " from " + currentPosition + ". ");
-        if (currentPosition.equalsIgnoreCase("Foyer"))
-            handleFoyerMove(direction);
-        else if (currentPosition.equalsIgnoreCase("Kitchen"))
-            handleKitchenMove(direction);
-        else if (currentPosition.equalsIgnoreCase("Attic"))
-            handleAtticMove(direction);
-        else if (currentPosition.equalsIgnoreCase("Basement"))
-            handleBasementMove(direction);
-        else
-            System.out.println("You cannot move in that direction.");
-    }
+        System.out.println("You're moving from the [" + currentLocation + "] in the following direction: [" + direction + "]");
 
-    public String printCurrentOptions() {
-        return("Your current position is: " + currentPosition);
+        if(currentLocation.equals("Foyer"))
+            handleFoyerMove(direction);
+        else if(currentLocation.equals("Kitchen"))
+            handleKitchenMove(direction);
+        else if(currentLocation.equals("Attic"))
+            handleAtticMove(direction);
+        else if(currentLocation.equals("Basement"))
+            handleBasementMove(direction);
     }
 
     public void handleFoyerMove(String direction) {
-        if (direction.equalsIgnoreCase(optionNorth))
-            currentPosition = "Foyer";
-        else if (direction.equalsIgnoreCase(optionSouth))
-            currentPosition = "Foyer";
-        else if (direction.equalsIgnoreCase(optionEast))
-            currentPosition = "Kitchen";
-        else if (direction.equalsIgnoreCase(optionWest))
-            currentPosition = "Foyer";
-        else
-            System.out.println("You cannot move there right now.");
+        if(direction.equals(EAST)){
+            currentLocation = "Kitchen";
+        }
+        else {
+            System.out.println("Cant get there from here.");
+        }
     }
 
     public void handleKitchenMove(String direction) {
-        if (direction.equalsIgnoreCase(optionNorth))
-            currentPosition = "Attic";
-        else if (direction.equalsIgnoreCase(optionSouth))
-            currentPosition = "Basement";
-        else if (direction.equalsIgnoreCase(optionEast))
-            currentPosition = "Kitchen";
-        else if (direction.equalsIgnoreCase(optionWest))
-            currentPosition = "Foyer";
+        if(direction.equals(NORTH))
+            currentLocation = "Attic";
+        else if(direction.equals(SOUTH))
+            currentLocation = "Basement";
+        else if(direction.equals(WEST))
+            currentLocation = "Foyer";
         else
-            System.out.println("You cannot move there right now.");
+            System.out.println("Cant get there from here.");
     }
 
     public void handleAtticMove(String direction) {
-        if (direction.equalsIgnoreCase(optionNorth))
-            currentPosition = "Attic";
-        else if (direction.equalsIgnoreCase(optionSouth))
-            currentPosition = "Kitchen";
-        else if (direction.equalsIgnoreCase(optionEast))
-            currentPosition = "Attic";
-        else if (direction.equalsIgnoreCase(optionWest))
-            currentPosition = "Attic";
+        if(direction.equals(SOUTH))
+            currentLocation = "Kitchen";
         else
-            System.out.println("You cannot move there right now.");
+            System.out.println("Cant get there from here.");
     }
 
     public void handleBasementMove(String direction) {
-        if (direction.equalsIgnoreCase(optionNorth))
-            currentPosition = "Kitchen";
-        else if (direction.equalsIgnoreCase(optionSouth))
-            currentPosition = "Basement";
-        else if (direction.equalsIgnoreCase(optionEast))
-            currentPosition = "Basement";
-        else if (direction.equalsIgnoreCase(optionWest))
-            currentPosition = "Basement";
+        if(direction.equals(NORTH))
+            currentLocation = "Kitchen";
         else
-            System.out.println("You cannot move there right now.");
+            System.out.println("Cant get there from here.");
     }
-
-    public String CurrentPosition() {
-        return currentPosition;
-    }
-
 }
-
-

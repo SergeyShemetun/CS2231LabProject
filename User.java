@@ -1,4 +1,4 @@
-package com.cs2231L.Milestone1;
+package com.ff;
 
 public class User {
     private String name;
@@ -20,4 +20,3 @@ public class User {
         return location.getCurrentLocation();
     }
 }
-
