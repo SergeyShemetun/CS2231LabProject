@@ -1,109 +1,66 @@
 package com.LabProject;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 
 public class Location {
 
-    private String currentPosition;
-    private String userLocation;
-    private String optionNorth;
-    private String optionEast;
-    private String optionSouth;
-    private String optionWest;
+	public final int locationId;
+	private final String description;
+	private final Map<String, Integer> moves;
+	private List<String> inventory;
 
-    public Location(String location) {
-        this.currentPosition = location;
-        userLocation = "Center";
-        optionNorth = "north";
-        optionSouth = "south";
-        optionEast = "east";
-        optionWest = "west";
-    }
+	public Location(int locationId, String description, ArrayList<String> inventory) {
+		this.locationId = locationId;
+		this.description = description;
+		this.moves = new HashMap<>();
+		this.moves.put("Quit", -1);
+		this.inventory = inventory;
+	}
 
-    public void move(){
-        System.out.println("What direction would you like to go?");
-        Scanner input = new Scanner(System.in);
-        String userInput = input.nextLine();
-    }
+	// get the location id
+	public int getLocation() {
+		return locationId;
+	}
 
+	// Get description of location
+	public String getDescription() {
+		return description;
+	}
 
+	// Add a direction to the map
+	public void addDirection(String direction, int location) {
+		moves.put(direction, location);
+	}
 
+	public Map<String, Integer> getMoves() {
+		return new HashMap<String, Integer>(moves);
+	}
 
+	// get all the players items
+	public String getAllItems() {
+		StringBuilder returnString = new StringBuilder();
+		ListIterator<String> itemsIterator = inventory.listIterator();
+		while (itemsIterator.hasNext()) {
+			returnString.append(itemsIterator.next());
+			if (itemsIterator.hasNext()) {
+				returnString.append(", ");
+			}
 
-    public void move(String direction) {
-        System.out.println("You are moving " + direction + " from " + currentPosition + ". ");
-        if (currentPosition.equalsIgnoreCase("Foyer"))
-            handleFoyerMove(direction);
-        else if (currentPosition.equalsIgnoreCase("Kitchen"))
-            handleKitchenMove(direction);
-        else if (currentPosition.equalsIgnoreCase("Attic"))
-            handleAtticMove(direction);
-        else if (currentPosition.equalsIgnoreCase("Basement"))
-            handleBasementMove(direction);
-        else
-            System.out.println("You cannot move in that direction.");
-    }
+		}
+		return returnString.toString();
+	}
 
-    public String printCurrentOptions() {
-        return("Your current position is: " + currentPosition);
-    }
+	public void lootItems(ArrayList<String> playerInv) {
+		ListIterator<String> planetInvIt = inventory.listIterator();
+		while (planetInvIt.hasNext()) {
+			playerInv.add(planetInvIt.next());
+			planetInvIt.remove();
+		}
 
-    public void handleFoyerMove(String direction) {
-        if (direction.equalsIgnoreCase(optionNorth))
-            currentPosition = "Foyer";
-        else if (direction.equalsIgnoreCase(optionSouth))
-            currentPosition = "Foyer";
-        else if (direction.equalsIgnoreCase(optionEast))
-            currentPosition = "Kitchen";
-        else if (direction.equalsIgnoreCase(optionWest))
-            currentPosition = "Foyer";
-        else
-            System.out.println("You cannot move there right now.");
-    }
-
-    public void handleKitchenMove(String direction) {
-        if (direction.equalsIgnoreCase(optionNorth))
-            currentPosition = "Attic";
-        else if (direction.equalsIgnoreCase(optionSouth))
-            currentPosition = "Basement";
-        else if (direction.equalsIgnoreCase(optionEast))
-            currentPosition = "Kitchen";
-        else if (direction.equalsIgnoreCase(optionWest))
-            currentPosition = "Foyer";
-        else
-            System.out.println("You cannot move there right now.");
-    }
-
-    public void handleAtticMove(String direction) {
-        if (direction.equalsIgnoreCase(optionNorth))
-            currentPosition = "Attic";
-        else if (direction.equalsIgnoreCase(optionSouth))
-            currentPosition = "Kitchen";
-        else if (direction.equalsIgnoreCase(optionEast))
-            currentPosition = "Attic";
-        else if (direction.equalsIgnoreCase(optionWest))
-            currentPosition = "Attic";
-        else
-            System.out.println("You cannot move there right now.");
-    }
-
-    public void handleBasementMove(String direction) {
-        if (direction.equalsIgnoreCase(optionNorth))
-            currentPosition = "Kitchen";
-        else if (direction.equalsIgnoreCase(optionSouth))
-            currentPosition = "Basement";
-        else if (direction.equalsIgnoreCase(optionEast))
-            currentPosition = "Basement";
-        else if (direction.equalsIgnoreCase(optionWest))
-            currentPosition = "Basement";
-        else
-            System.out.println("You cannot move there right now.");
-    }
-
-    public String CurrentPosition() {
-        return currentPosition;
-    }
+	}
 
 }
-
-
